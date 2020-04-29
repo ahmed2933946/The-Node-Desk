@@ -1,0 +1,16 @@
+<div ng-controller="UserController" ng-init="getUserFromUrl(userId)">
+    <div ng-controller="FormController">
+        <b><a class="1" href="#" editable-text="user.firstName" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ user.firstName || "empty" }}</a></b>
+        <br/>
+        <b><a class="1" ng-href="#" editable-text="user.lastName" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ user.lastName || "empty" }}</a></b>
+        <br/>
+        <b><a class="2" ng-href="#" editable-select="user.email" e-ng-options="s.value as s.text for s in statuses" editable-text="user.email" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ user.email || "empty" }}</a></b>
+        <br/>
+        <button ng-click="updateUserProfile(user.id, $index);addFormProfile()" class="btn btn-sm btn-success">Update</button>
+     <div  <br/><b><a class="1" ng-href="#" ng-repeat="f in forms track by $index" editable-text="f.name" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ f.name  || "  Add Form  " }}</a></b><br/>
+        <button class="btn btn-sm btn-success" ng-click="addForm1()">+</button>
+        </div>
+    </div>
+</div>
+
+

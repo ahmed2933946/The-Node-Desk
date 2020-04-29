@@ -1,0 +1,207 @@
+<div class="row">
+
+    <div class="col-md-2">
+        <lx-text-field label="Company Name">
+            <input type="text" ng-model="company.companyName">
+        </lx-text-field>
+    </div>
+
+    <div class="col-md-2">
+        <lx-text-field label="Locatione">
+            <input type="text" ng-model="company.location">
+        </lx-text-field>
+    </div>
+
+    <div class="col-md-2">
+        <lx-text-field label="Billing">
+            <input type="text" ng-model="company.billing">
+        </lx-text-field>
+    </div>
+
+        <div class="col-md-2">
+        <lx-text-field label="Email">
+            <input type="text" ng-model="company.email">
+        </lx-text-field>
+    </div>
+            <div class="col-md-2">
+        <lx-text-field label="Employees">
+            <input type="text" ng-model="company.employees">
+        </lx-text-field>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2 col-md-10 col-lg-10">
+        <button ng-click="listCompanies()" class="btn btn--m btn--orange btn--raised" lx-ripple>List Companies</button>
+        <button ng-click="addCompany()" class="btn btn--m btn--green btn--raised" lx-ripple>Create Company</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <table class="data-table data-table--has-primary data-table--has-secondary">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th>Billing Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in companies | filter:query">
+                    <td>{{c.companyName}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.location}}</td>
+                    <td>{{c.billing}}</td>
+                    <td>
+                        <button ng-click="removeAllCompany(c.id)" class="btn btn--m btn--red btn--raised" lx-ripple>DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<lx-dialog class="dialog dialog--l" id="company" onclose="closingDialog()">
+    <div class="dialog__header">
+        <div class="toolbar bgc-light-blue-500">
+            <span class="toolbar__label tc-white fs-title">
+                                           <b><a class="1" ng-href="#" editable-text="company.companyName" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ company.companyName || "empty" }}</a></b>
+            </span>
+
+            <div class="toolbar__right">
+                <button class="btn btn--l btn--white btn--icon" lx-ripple ng-click="">
+                    <i class="mdi mdi--add"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog__content">
+        <lx-tabs links-tc="light" links-bgc="light-blue-500" indicator="yellow-500" no-divider="true" layout="inline">
+            <lx-tab heading="Company">
+
+                <p>
+                    <div class="col-md-3">
+                        <lx-text-field label="Location">
+                            <input type="text" ng-model="company.location">
+                        </lx-text-field>
+                    </div>
+                    <div class="col-md-3">
+                        <lx-text-field label="billing">
+                            <input type="text" ng-model="company.billing">
+                        </lx-text-field>
+                    </div>
+                    <div class="col-md-3">
+                        <lx-text-field label="email">
+                            <input type="text" ng-model="company.email">
+                        </lx-text-field>
+                </p>
+                </div>
+
+            </lx-tab>
+            <lx-tab heading="Custom">
+                <div class="col-md-3">
+                    <lx-text-field label="Billing Type">
+                        <input type="text" ng-model="company.billing">
+                    </lx-text-field>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <lx-text-field label="Locations">
+                        <input type="text" ng-model="company.location">
+                    </lx-text-field>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <lx-text-field label="email">
+                        <input type="text" ng-model="company.email">
+                    </lx-text-field>
+                    </p>
+                </div>
+            </lx-tab>
+
+        </lx-tabs>
+    </div>
+    <div class="dialog__actions">
+        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-dialog-close>Cancel</button>
+        <button ng-click="userCompanySave(data)" class="btn btn--m btn--black btn--flat" lx-ripple>Save</button>
+    </div>
+</lx-dialog>
+
+</div>
+</div>
+</div>
+
+
+
+<lx-dialog class="dialog dialog--l" id="company2" onclose="closingDialog()">
+    <div class="dialog__header">
+        <div class="toolbar bgc-light-blue-500">
+            <span class="toolbar__label tc-white fs-title">
+                                           <b><a class="1" ng-href="#" editable-text="company.companyName" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ company.companyName || "empty" }}</a></b>
+            </span>
+
+            <div class="toolbar__right">
+                <button class="btn btn--l btn--white btn--icon" lx-ripple ng-click="">
+                    <i class="mdi mdi--add"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog__content">
+        <lx-tabs links-tc="light" links-bgc="light-blue-500" indicator="yellow-500" no-divider="true" layout="inline">
+            <lx-tab heading="Company">
+
+                <p>
+                    <div class="col-md-3">
+                        <lx-text-field label="Location">
+                            <input type="text" ng-model="company.location">
+                        </lx-text-field>
+                    </div>
+                    <div class="col-md-3">
+                        <lx-text-field label="billing">
+                            <input type="text" ng-model="company.billing">
+                        </lx-text-field>
+                    </div>
+                    <div class="col-md-3">
+                        <lx-text-field label="email">
+                            <input type="text" ng-model="company.email">
+                        </lx-text-field>
+                </p>
+                </div>
+
+            </lx-tab>
+            <lx-tab heading="Custom">
+                <div class="col-md-3">
+                    <lx-text-field label="Billing Type">
+                        <input type="text" ng-model="company.billing">
+                    </lx-text-field>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <lx-text-field label="Locations">
+                        <input type="text" ng-model="company.location">
+                    </lx-text-field>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <lx-text-field label="email">
+                        <input type="text" ng-model="company.email">
+                    </lx-text-field>
+                    </p>
+                </div>
+            </lx-tab>
+
+        </lx-tabs>
+    </div>
+    <div class="dialog__actions">
+        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-dialog-close>Cancel</button>
+        <button ng-click="userCompanySave2     (data)" class="btn btn--m btn--black btn--flat" lx-ripple>Save</button>
+    </div>
+</lx-dialog>
+
+</div>
+</div>
+</div>

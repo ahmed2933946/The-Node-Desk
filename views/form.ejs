@@ -1,0 +1,36 @@
+<div ng-controller="FormController">
+
+    <button ng-click="listForms()" class="btn btn-md btn-warning">List Forms</button>
+
+    <input ng-model="query" classs="form-control" type="text" placeholder="Search">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Members</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="f in forms | filter:query">
+                <td><a href="http://localhost:1337/form/{{f.id}}">More Info</a>
+                </td>
+                <td><b><a class="1" href="#" editable-text="f.formName" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ f.formName || "empty" }}</a></b>
+                </td>
+                <td><b><a class="1" href="#" editable-text="f.owner" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ f.owner || "empty" }}</a></b>
+                </td>
+                <td><b><a class="1" href="#" editable-text="f.data" style="color: #000000; text-decoration: none; border-bottom: 0px solid">{{ f.data || "empty" }}</a></b>
+                </td>
+                <td>
+                    <button ng-click="removeForm(f.id)" class="btn btn-sm btn-danger">DELETE</button>
+                </td>
+                <td>
+                    <button ng-click="updateForm(f.id, $index)" class="btn btn-sm btn-success">Update</button>
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>
